@@ -1,0 +1,37 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Products</li>
+  </ol>
+</div>
+<div class="container">
+  <h1>Here you can edit the list of products</h1>
+  <%= link_to 'Add product', new_product_path, class: "btn btn-primary btn-add-product" %>
+  <table class="table-products table table-bordered table-hover" id="table-products">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Count</th>
+      <th>Address</th>
+      <th>Delivery date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.count %></td>
+          <td><%= product.address %></td>
+          <td><%= product.delivery_date.strftime("%d.%m.%Y") %></td>
+          <td><%= product.status %></td>
+          <td>
+            <%= link_to 'Edit', edit_product_path(product), class: "btn btn-default pull-left" %>
+            <%= link_to 'Show', product, class: "btn btn-default pull-right" %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
